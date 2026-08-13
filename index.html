@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oraimo Dakar Market — Catalogue</title>
+<meta name="description" content="Oraimo Dakar Market — produits Oraimo authentiques, livraison rapide sur Dakar. Parcourez le catalogue et contactez-nous par téléphone ou WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+
+  /* ===================== TOKENS ===================== */
+  :root{
+    --bg: #14120F;
+    --surface: #1E1B17;
+    --surface-2: #262220;
+    --line: #332E28;
+    --ink: #14120F;
+    --text: #F3ECE0;
+    --muted: #A89A87;
+    --gold: #A6D608;
+    --gold-deep: #5C7A0E;
+    --berry: #8B3A4A;
+    --sage: #4C7A5D;
+    --sage-deep: #3A5D48;
+
+    --display: 'Fraunces', serif;
+    --body: 'Work Sans', sans-serif;
+    --mono: 'Space Mono', monospace;
+
+    --radius: 14px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; text-decoration:none; }
+  button{ font-family:inherit; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+  }
+
+  /* ===================== LAYOUT SHELL ===================== */
+  .shell{
+    max-width:520px;
+    margin:0 auto;
+    min-height:100vh;
+    padding:0 20px 60px;
+    position:relative;
+  }
+  @media (min-width:640px){
+    .shell{ max-width:720px; padding:0 32px 80px; }
+  }
+  @media (min-width:960px){
+    .shell{ max-width:960px; }
+  }
+
+  /* ===================== HEADER ===================== */
+  .site-header{
+    padding:36px 0 28px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:28px;
+  }
+  .wordmark{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(28px, 6vw, 38px);
+    letter-spacing:0.01em;
+    color:var(--text);
+  }
+  .wordmark span{ color:var(--gold); }
+  .tagline{
+    margin:6px 0 0;
+    font-size:13px;
+    color:var(--muted);
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    font-family:var(--mono);
+  }
+
+  /* ===================== VIEW TRANSITION ===================== */
+  #app{ opacity:0; transform:translateY(6px); }
+  #app.view-enter{ animation:enter 380ms ease forwards; }
+  @keyframes enter{ to{ opacity:1; transform:translateY(0); } }
+
+  /* ===================== BACK LINK ===================== */
+  .back-link{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:20px;
+    transition:color 160ms ease;
+  }
+  .back-link:hover{ color:var(--gold); }
+
+  /* ===================== SECTION TITLES ===================== */
+  .section-title{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(22px, 5vw, 30px);
+    margin:0 0 6px;
+  }
+  .section-count{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    margin:0 0 22px;
+  }
+
+  /* ===================== CATEGORY GRID ===================== */
+  .grid-cat{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:14px;
+  }
+  .cat-card{
+    position:relative;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:22px 16px 18px;
+    overflow:hidden;
+    transition:transform 200ms ease, border-color 200ms ease, background 200ms ease;
+  }
+  .cat-card:hover{
+    transform:translateY(-3px);
+    border-color:var(--gold-deep);
+    background:var(--surface-2);
+  }
+  .cat-card::before{
+    content:'';
+    position:absolute;
+    top:0; right:0;
+    width:0; height:0;
+    border-style:solid;
+    border-width:0 26px 26px 0;
+    border-color:transparent var(--gold-deep) transparent transparent;
+    opacity:0.9;
+  }
+  .cat-icon{ font-size:26px; margin-bottom:14px; display:block; }
+  .cat-name{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:18px;
+    margin:0 0 4px;
+  }
+  .cat-qty{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+  }
+
+  /* ===================== PRODUCT GRID ===================== */
+  .grid-prod{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  @media (min-width:640px){
+    .grid-prod{ grid-template-columns:1fr 1fr 1fr; }
+  }
+  .prod-card{
+    display:block;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    transition:transform 200ms ease, border-color 200ms ease;
+  }
+  .prod-card:hover{ transform:translateY(-3px); border-color:var(--gold-deep); }
+  .prod-photo{
+    aspect-ratio:4/5;
+    width:100%;
+    background:linear-gradient(160deg, var(--surface-2), var(--surface));
+    display:flex; align-items:center; justify-content:center;
+    color:var(--muted);
+    font-size:12px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .prod-photo img{ width:100%; height:100%; object-fit:cover; }
+  .prod-info{ padding:12px 12px 14px; }
+  .prod-name{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:15px;
+    margin:0 0 8px;
+    line-height:1.25;
+  }
+
+  /* ===================== TAG (signature price element) ===================== */
+  .tag{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    background:var(--gold);
+    color:var(--ink);
+    font-family:var(--mono);
+    font-weight:700;
+    line-height:1;
+    padding:7px 12px 7px 18px;
+    clip-path: polygon(10px 0, 100% 0, 100% 100%, 10px 100%, 0 50%);
+    font-size:12px;
+  }
+  .tag::after{
+    content:'';
+    position:absolute;
+    left:6px; top:50%;
+    width:4px; height:4px;
+    border-radius:50%;
+    background:var(--bg);
+    transform:translateY(-50%);
+  }
+  .tag--lg{
+    padding:12px 22px 12px 30px;
+    font-size:20px;
+    clip-path: polygon(16px 0, 100% 0, 100% 100%, 16px 100%, 0 50%);
+  }
+  .tag--lg::after{ left:10px; width:6px; height:6px; }
+
+  /* ===================== PRODUCT DETAIL ===================== */
+  .prod-detail-photo{
+    aspect-ratio:4/5;
+    width:100%;
+    border-radius:var(--radius);
+    overflow:hidden;
+    background:linear-gradient(160deg, var(--surface-2), var(--surface));
+    display:flex; align-items:center; justify-content:center;
+    color:var(--muted);
+    margin-bottom:20px;
+  }
+  .prod-detail-photo img{ width:100%; height:100%; object-fit:cover; }
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin:0 0 8px;
+  }
+  .prod-title{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(24px, 6vw, 34px);
+    margin:0 0 12px;
+  }
+  .prod-desc{
+    color:var(--muted);
+    font-size:15px;
+    margin:0 0 20px;
+    max-width:52ch;
+  }
+
+  /* ===================== CONTACT CARD ===================== */
+  .contact-card{
+    margin-top:26px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:20px;
+  }
+  .contact-label{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin:0 0 4px;
+  }
+  .contact-phone{
+    font-family:var(--mono);
+    font-size:19px;
+    color:var(--text);
+    margin:0 0 18px;
+  }
+  .contact-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+  .btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:13px 10px;
+    border-radius:10px;
+    font-weight:600;
+    font-size:14px;
+    border:1px solid transparent;
+    transition:transform 160ms ease, filter 160ms ease;
+  }
+  .btn:hover{ transform:translateY(-2px); filter:brightness(1.08); }
+  .btn svg{ width:17px; height:17px; flex:none; }
+  .btn--call{ background:var(--gold); color:var(--ink); }
+  .btn--whatsapp{ background:var(--sage); color:#EFF6F1; }
+
+  /* ===================== EMPTY / ERROR ===================== */
+  .empty{
+    padding:40px 0;
+    color:var(--muted);
+    font-family:var(--mono);
+    font-size:14px;
+  }
+
+  /* ===================== FOOTER ===================== */
+  .site-footer{
+    margin-top:50px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+    color:var(--muted);
+    font-family:var(--mono);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <header class="site-header">
+    <div class="wordmark">ORAIMO <span>DAKAR MARKET</span></div>
+    <p class="tagline">Produits Oraimo authentiques — livraison rapide sur Dakar</p>
+  </header>
+
+  <div id="app"></div>
+
+  <footer class="site-footer">Oraimo Dakar Market — Livraison rapide sur Dakar — TikTok & Instagram @oraimodakarmarket</footer>
+</div>
+
+<script>
+/* ================================================================
+   📝 COMMENT PERSONNALISER CE CATALOGUE (pas besoin de coder)
+   ================================================================
+   1. Changez le numéro par défaut ci-dessous (NUMERO_PAR_DEFAUT).
+   2. Modifiez ou ajoutez des catégories dans le tableau CATALOGUE.
+   3. Pour chaque produit, remplissez : nom, description, prix, photo.
+      - Méthode simple : mettez vos photos dans un dossier "images" à côté
+        de ce fichier, puis écrivez juste "images/nom-du-fichier.jpg".
+        (C'est ce qui a été fait pour le mini ventilateur.)
+      - Vous pouvez aussi mettre un lien internet direct vers une image
+        (par exemple hébergée sur https://imgur.com).
+      - Si vous laissez photo: "" , un cadre "Photo à venir" s'affiche.
+   4. Chaque produit peut avoir son propre numéro (telephone), sinon
+      il utilise le numéro par défaut.
+   5. Chaque catégorie et chaque produit doit avoir un "id" unique,
+      en minuscules, sans espace ni accent (ex: "abaya-noire").
+   ================================================================ */
+
+const NUMERO_PAR_DEFAUT = "+221 78 606 61 37";
+
+const CATALOGUE = [
+  {
+    id: "ecouteurs",
+    nom: "Écouteurs",
+    icone: "🎧",
+    produits: [
+      { id: "necklace-oeb-611", nom: "Necklace OEB-611", description: "Écouteurs neckband, câble collier léger, autonomie confortable pour toute la journée.", prix: 10000, photo: "" },
+      { id: "spacebuds-air-otw-324s", nom: "Spacebuds Air OTW-324S", description: "Écouteurs TWS légers et compacts, son clair pour un usage quotidien.", prix: 10000, photo: "" },
+      { id: "freepods-neo-otw-330s", nom: "Freepods Neo OTW-330S", description: "Écouteurs sans fil intra-auriculaires, bonne tenue et confort prolongé.", prix: 13000, photo: "" },
+      { id: "spacebuds-neo-plus-otw-323p", nom: "Spacebuds Neo+ OTW-323P", description: "Écouteurs TWS avec basses renforcées, idéal pour la musique et les appels.", prix: 15000, photo: "" },
+      { id: "opensnap-opn-373", nom: "OpenSnap OPN-373", description: "Écouteurs open-ear à clip, ne bloquent pas l'oreille, confortables pour le sport.", prix: 17000, photo: "" },
+      { id: "spacebuds-otw-630", nom: "Spacebuds OTW-630", description: "Écouteurs sans fil polyvalents, son équilibré et autonomie solide.", prix: 25000, photo: "" },
+      { id: "freepods-4-oeb-e105d", nom: "FreePods 4 OEB-E105D", description: "Écouteurs TWS nouvelle génération, bonne accroche et son soigné.", prix: 25000, photo: "" },
+      { id: "openarc-opn-675", nom: "OpenArc OPN-675", description: "Écouteurs open-ear format arceau, portés toute la journée sans gêne.", prix: 25000, photo: "" },
+      { id: "opencirclet-2-opn-672", nom: "OpenCirclet 2 OPN-672", description: "Écouteurs open-ear à crochet d'oreille, stables même en mouvement.", prix: 25000, photo: "" },
+      { id: "spacebuds-pro", nom: "Spacebuds Pro", description: "Écouteurs TWS haut de gamme, son premium et autonomie étendue.", prix: 50000, photo: "" }
+    ]
+  },
+  {
+    id: "montres",
+    nom: "Montres Connectées",
+    icone: "⌚",
+    produits: [
+      { id: "watch-4-plus-osw-801", nom: "Watch 4 Plus OSW-801", description: "Montre connectée avec suivi santé et notifications, écran lisible au quotidien.", prix: 15000, photo: "" },
+      { id: "watch-5-lite-osw-904", nom: "Watch 5 Lite OSW-904", description: "Montre connectée légère, essentielle pour le suivi d'activité et les notifications.", prix: 15000, photo: "" },
+      { id: "watch-6r-osw-823", nom: "Watch 6R OSW-823", description: "Montre connectée ronde, design classique et fonctions de suivi santé.", prix: 15000, photo: "" },
+      { id: "watch-2pro-osw-32", nom: "Watch 2Pro OSW-32", description: "Montre connectée avec fonctions avancées de suivi sportif et santé.", prix: 25000, photo: "" },
+      { id: "watch-nova-2-osw-814", nom: "Watch Nova 2 OSW-814", description: "Montre connectée à l'écran net, notifications et suivi d'activité au quotidien.", prix: 25000, photo: "" },
+      { id: "watch-nova-2r-osw-834", nom: "Watch Nova 2R OSW-834", description: "Montre connectée format rond, suivi santé et autonomie longue durée.", prix: 25000, photo: "" },
+      { id: "watch-pro-x", nom: "Watch Pro X", description: "Montre connectée haut de gamme, suivi sportif complet et finitions premium.", prix: 65000, photo: "" }
+    ]
+  },
+  {
+    id: "powerbank",
+    nom: "Power Bank",
+    icone: "🔋",
+    produits: [
+      { id: "slicelink-12w-opb-p5101", nom: "SliceLink 12w 10000mAh OPB-P5101", description: "Batterie externe 10 000 mAh, charge 12W, format fin et facile à transporter.", prix: 10000, photo: "" },
+      { id: "powerflow-l1-opb-1103", nom: "PowerFlow L1 10000mAh OPB-1103", description: "Batterie externe 10 000 mAh, compacte, pour recharger votre téléphone en déplacement.", prix: 11000, photo: "" },
+      { id: "powernova-l11-opb-7103c", nom: "PowerNova L11 10000mAh OPB-7103C", description: "Batterie externe 10 000 mAh, charge fiable pour un usage quotidien.", prix: 12000, photo: "" },
+      { id: "powernova-l21-opb-7203c", nom: "PowerNova L21 20000mAh OPB-7203C", description: "Batterie externe 20 000 mAh, grande capacité pour plusieurs recharges.", prix: 17000, photo: "" },
+      { id: "traveler-link-20-opb-p5201", nom: "Traveler Link 20 20000mAh OPB-P5201", description: "Batterie externe 20 000 mAh, pensée pour les voyages et longues journées.", prix: 15000, photo: "" },
+      { id: "magpower-15-opb-7102w", nom: "Magpower 15 OPB-7102W", description: "Batterie externe magnétique 15W, se fixe directement au dos du téléphone.", prix: 18000, photo: "" },
+      { id: "traveler-link-27-opb-p5271", nom: "Traveler Link 27 27000mAh OPB-P5271", description: "Batterie externe 27 000 mAh, grande autonomie pour plusieurs appareils.", prix: 22000, photo: "" },
+      { id: "powerjet-501-opb-750sq", nom: "PowerJet 501 50000mAh OPB-750SQ", description: "Batterie externe 50 000 mAh, très grande capacité pour plusieurs jours d'autonomie.", prix: 30000, photo: "" }
+    ]
+  },
+  {
+    id: "chargeurs",
+    nom: "Chargeurs",
+    icone: "🔌",
+    produits: [
+      { id: "powercube-20-ocw-e106s-cc54", nom: "PowerCube 20 20w Type-C to Type-C OCW-E106S+CC54", description: "Chargeur 20W, câble Type-C vers Type-C inclus, charge rapide et compacte.", prix: 6000, photo: "" },
+      { id: "powercube-202-lightning-ocw-5202ecl", nom: "PowerCube 202 20w Type-C to Lightning OCW-5202ECL", description: "Chargeur 20W, câble Type-C vers Lightning inclus, compatible iPhone.", prix: 6000, photo: "" },
+      { id: "powercube-201-rapid-ocw-5203ecc", nom: "PowerCube 201 Rapid Charge 20w Type-C to Type-C OCW-5203ECC", description: "Chargeur 20W charge rapide, câble Type-C vers Type-C inclus.", prix: 6000, photo: "" },
+      { id: "powercube-202-ocw-5202ecc", nom: "PowerCube 202 20w Type-C to Type-C OCW-5202ECC", description: "Chargeur 20W, câble Type-C vers Type-C inclus, format compact.", prix: 6000, photo: "" },
+      { id: "powergan-251-ocw-5251ecc", nom: "PowerGan 251 Ultra Fast 25w Type-C OCW-5251ECC", description: "Chargeur GaN 25W ultra rapide, câble Type-C inclus.", prix: 7000, photo: "" },
+      { id: "powergan-351-ocw-5351ecc", nom: "PowerGan 351 35w Ultra Fast OCW-5351ECC", description: "Chargeur GaN 35W ultra rapide, idéal pour smartphone et petits appareils.", prix: 8000, photo: "" },
+      { id: "powergan-451-ocw-5451ecc", nom: "PowerGan 451 45w Ultra Fast OCW-5451ECC", description: "Chargeur GaN 45W ultra rapide, compatible smartphones et tablettes.", prix: 9000, photo: "" },
+      { id: "powergan-33-pro-ocw-7331e-ec54", nom: "PowerGan 33 Pro GAN Charging Type-C OCW-7331E+EC54", description: "Chargeur GaN compact, charge rapide, câble Type-C inclus.", prix: 10000, photo: "" },
+      { id: "hypergan-65", nom: "HyperGan 65", description: "Chargeur GaN 65W, assez puissant pour recharger un petit ordinateur portable.", prix: 17000, photo: "" }
+    ]
+  },
+  {
+    id: "casques",
+    nom: "Casque",
+    icone: "🎶",
+    produits: [
+      { id: "boompop-lite-ohp-317", nom: "BoomPop Lite OHP-317", description: "Casque audio léger, confortable pour un usage quotidien.", prix: 16000, photo: "" },
+      { id: "boompop-2s-ohp-610s", nom: "BoomPop 2S OHP-610S", description: "Casque audio avec son renforcé, bon maintien sur les oreilles.", prix: 18000, photo: "" },
+      { id: "boompop-pro-ohp-917", nom: "BoomPop Pro OHP-917", description: "Casque audio haut de gamme, confort renforcé et son puissant.", prix: 25000, photo: "" }
+    ]
+  },
+  {
+    id: "enceintes",
+    nom: "Enceinte",
+    icone: "🔊",
+    produits: [
+      { id: "spacebox-obs-382", nom: "SpaceBox OBS-382", description: "Enceinte portable compacte, son clair pour un usage quotidien.", prix: 15000, photo: "" },
+      { id: "spacebox-active-obs-680", nom: "SpaceBox Active OBS-680", description: "Enceinte portable puissante, idéale pour l'extérieur et les soirées.", prix: 25000, photo: "" }
+    ]
+  },
+  {
+    id: "microphones",
+    nom: "Microphone",
+    icone: "🎙️",
+    produits: [
+      { id: "voxmic-omh-692", nom: "Voxmic OMH-692", description: "Microphone pratique pour les enregistrements, appels et lives.", prix: 37000, photo: "" }
+    ]
+  },
+  {
+    id: "supports",
+    nom: "Support Téléphone",
+    icone: "📱",
+    produits: [
+      { id: "hydra-8-ocm-30", nom: "Hydra 8 OCM-30", description: "Support téléphone stable, pratique pour le bureau ou la maison.", prix: 6000, photo: "" },
+      { id: "hydra-7-ocm-14", nom: "Hydra 7 OCM-14", description: "Support téléphone compact, facile à transporter.", prix: 7000, photo: "" },
+      { id: "hydra-6-ocm-31", nom: "Hydra 6 OCM-31", description: "Support téléphone réglable, plusieurs angles de visionnage.", prix: 8000, photo: "" }
+    ]
+  },
+  {
+    id: "ventilateurs",
+    nom: "Mini Ventilateur",
+    icone: "🌀",
+    produits: [
+      { id: "smarthandheldfan-2-ohf-201a", nom: "SmartHandheldFan 2 OHF-201A", description: "Mini ventilateur portable, pratique à glisser dans le sac pour les journées chaudes.", prix: 12000, photo: "images/smarthandheldfan-2-ohf-201a.jpg" }
+    ]
+  }
+];
+
+/* ================================================================
+   Le code ci-dessous gère l'affichage. Vous n'avez normalement
+   pas besoin d'y toucher.
+   ================================================================ */
+
+const ICON_PHONE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`;
+const ICON_CHAT = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>`;
+
+function findCategorie(id){ return CATALOGUE.find(c => c.id === id); }
+function findProduit(id){
+  for(const cat of CATALOGUE){
+    const p = cat.produits.find(p => p.id === id);
+    if(p) return { produit:p, categorie:cat };
+  }
+  return null;
+}
+function photoBlock(photo, alt, cls){
+  if(photo){
+    return `<div class="${cls}"><img src="${photo}" alt="${alt}" loading="lazy"></div>`;
+  }
+  return `<div class="${cls}">Photo à venir</div>`;
+}
+function whatsappHref(numero, texte){
+  const clean = numero.replace(/[^\d]/g, "");
+  return `https://wa.me/${clean}?text=${encodeURIComponent(texte)}`;
+}
+function formatPrix(n){
+  return `${n.toLocaleString("fr-FR")} FCFA`;
+}
+
+function renderCatalogue(){
+  const cards = CATALOGUE.map(cat => `
+    <a class="cat-card" href="#/categorie/${cat.id}">
+      <span class="cat-icon">${cat.icone || "🛍️"}</span>
+      <p class="cat-name">${cat.nom}</p>
+      <p class="cat-qty">${cat.produits.length} article${cat.produits.length > 1 ? "s" : ""}</p>
+    </a>
+  `).join("");
+  return `
+    <h1 class="section-title">Catégories</h1>
+    <p class="section-count">Choisissez une catégorie pour voir les produits</p>
+    <div class="grid-cat">${cards}</div>
+  `;
+}
+
+function renderCategorie(id){
+  const cat = findCategorie(id);
+  if(!cat){
+    return `<a class="back-link" href="#/">← Retour au catalogue</a><p class="empty">Catégorie introuvable.</p>`;
+  }
+  const cards = cat.produits.map(p => `
+    <a class="prod-card" href="#/produit/${p.id}">
+      ${photoBlock(p.photo, p.nom, "prod-photo")}
+      <div class="prod-info">
+        <p class="prod-name">${p.nom}</p>
+        <span class="tag">${formatPrix(p.prix)}</span>
+      </div>
+    </a>
+  `).join("");
+  return `
+    <a class="back-link" href="#/">← Tout le catalogue</a>
+    <h1 class="section-title">${cat.nom}</h1>
+    <p class="section-count">${cat.produits.length} article${cat.produits.length > 1 ? "s" : ""}</p>
+    <div class="grid-prod">${cards}</div>
+  `;
+}
+
+function renderProduit(id){
+  const found = findProduit(id);
+  if(!found){
+    return `<a class="back-link" href="#/">← Retour au catalogue</a><p class="empty">Produit introuvable.</p>`;
+  }
+  const { produit, categorie } = found;
+  const numero = produit.telephone || NUMERO_PAR_DEFAUT;
+  const message = `Bonjour, je suis intéressé(e) par : ${produit.nom}`;
+  return `
+    <a class="back-link" href="#/categorie/${categorie.id}">← ${categorie.nom}</a>
+    ${photoBlock(produit.photo, produit.nom, "prod-detail-photo")}
+    <p class="eyebrow">${categorie.nom}</p>
+    <h1 class="prod-title">${produit.nom}</h1>
+    <p class="prod-desc">${produit.description}</p>
+    <span class="tag tag--lg">${formatPrix(produit.prix)}</span>
+
+    <div class="contact-card">
+      <p class="contact-label">Contact vendeur</p>
+      <p class="contact-phone">${numero}</p>
+      <div class="contact-actions">
+        <a class="btn btn--call" href="tel:${numero}">${ICON_PHONE} Appeler</a>
+        <a class="btn btn--whatsapp" href="${whatsappHref(numero, message)}" target="_blank" rel="noopener">${ICON_CHAT} WhatsApp</a>
+      </div>
+    </div>
+  `;
+}
+
+function parseHash(){
+  const h = location.hash.replace(/^#\/?/, "");
+  const parts = h.split("/").filter(Boolean);
+  if(parts.length === 0) return { view:"catalogue" };
+  if(parts[0] === "categorie" && parts[1]) return { view:"categorie", id:parts[1] };
+  if(parts[0] === "produit" && parts[1]) return { view:"produit", id:parts[1] };
+  return { view:"catalogue" };
+}
+
+function render(){
+  const route = parseHash();
+  const app = document.getElementById("app");
+  let html;
+  if(route.view === "categorie") html = renderCategorie(route.id);
+  else if(route.view === "produit") html = renderProduit(route.id);
+  else html = renderCatalogue();
+  app.innerHTML = html;
+  app.classList.remove("view-enter");
+  void app.offsetWidth;
+  app.classList.add("view-enter");
+  window.scrollTo(0, 0);
+}
+
+window.addEventListener("hashchange", render);
+window.addEventListener("DOMContentLoaded", render);
+</script>
+</body>
+</html>
