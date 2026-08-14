@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administration — Oraimo Dakar Market</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --bg: #14120F;
+    --surface: #1E1B17;
+    --surface-2: #262220;
+    --line: #332E28;
+    --ink: #14120F;
+    --text: #F3ECE0;
+    --muted: #A89A87;
+    --gold: #A6D608;
+    --gold-deep: #5C7A0E;
+    --berry: #8B3A4A;
+    --sage: #4C7A5D;
+    --danger: #D4574C;
+
+    --display: 'Fraunces', serif;
+    --body: 'Work Sans', sans-serif;
+    --mono: 'Space Mono', monospace;
+    --radius: 12px;
+  }
+
+  *{ box-sizing:border-box; }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    line-height:1.5;
+  }
+  a{ color:inherit; }
+  input, textarea, select, button{ font-family:inherit; }
+
+  .shell{
+    max-width:760px;
+    margin:0 auto;
+    padding:32px 20px 100px;
+  }
+
+  .top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:28px;
+    padding-bottom:20px;
+    border-bottom:1px solid var(--line);
+  }
+  .top-title{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:22px;
+  }
+  .top-title span{ color:var(--gold); }
+  .top-sub{
+    font-family:var(--mono);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--muted);
+    margin-top:4px;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    padding:10px 16px;
+    border-radius:8px;
+    font-size:13px;
+    font-weight:600;
+    border:1px solid var(--line);
+    background:var(--surface);
+    color:var(--text);
+    cursor:pointer;
+    transition:transform 140ms ease, border-color 140ms ease;
+  }
+  .btn:hover{ transform:translateY(-1px); border-color:var(--gold-deep); }
+  .btn--primary{ background:var(--gold); color:var(--ink); border-color:var(--gold); }
+  .btn--danger{ background:transparent; color:var(--danger); border-color:var(--danger); }
+  .btn--small{ padding:6px 11px; font-size:12px; }
+  .btn--ghost{ background:transparent; }
+  .btn:disabled{ opacity:0.5; cursor:not-allowed; transform:none; }
+
+  .card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:20px;
+    margin-bottom:16px;
+  }
+
+  label{
+    display:block;
+    font-family:var(--mono);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    color:var(--muted);
+    margin:14px 0 6px;
+  }
+  label:first-child{ margin-top:0; }
+  input[type=text], input[type=password], input[type=number], textarea, select{
+    width:100%;
+    padding:10px 12px;
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:8px;
+    color:var(--text);
+    font-size:14px;
+  }
+  input:focus, textarea:focus, select:focus{ outline:none; border-color:var(--gold-deep); }
+  textarea{ resize:vertical; min-height:70px; }
+  .field-row{ display:flex; gap:12px; }
+  .field-row > div{ flex:1; }
+  .check-row{ display:flex; align-items:center; gap:8px; font-size:13px; color:var(--muted); margin-top:10px; }
+  .help{ font-size:12px; color:var(--muted); margin-top:6px; line-height:1.5; }
+  .help a{ color:var(--gold); }
+  .error-msg{ color:var(--danger); font-size:13px; margin-top:10px; }
+
+  /* ============ LOGIN ============ */
+  .login-wrap{ max-width:440px; margin:60px auto; }
+  .login-title{ font-family:var(--display); font-size:24px; font-weight:600; margin-bottom:6px; }
+  .login-sub{ color:var(--muted); font-size:14px; margin-bottom:24px; }
+
+  /* ============ SETTINGS ============ */
+  .settings-row{ display:flex; gap:10px; align-items:flex-end; }
+  .settings-row > div{ flex:1; }
+
+  /* ============ CATEGORY LIST ============ */
+  .cat-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:14px;
+  }
+  .cat-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--display);
+    font-weight:600;
+    font-size:17px;
+  }
+  .cat-actions{ display:flex; gap:6px; }
+  .prod-row{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:10px 0;
+    border-top:1px solid var(--line);
+  }
+  .prod-thumb{
+    width:44px; height:44px;
+    border-radius:6px;
+    background:var(--surface-2);
+    flex:none;
+    overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+    font-size:9px; color:var(--muted); text-align:center;
+  }
+  .prod-thumb img{ width:100%; height:100%; object-fit:cover; }
+  .prod-info{ flex:1; min-width:0; }
+  .prod-name{ font-size:14px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .prod-price{ font-family:var(--mono); font-size:12px; color:var(--gold); }
+  .prod-actions{ display:flex; gap:6px; flex:none; }
+  .add-prod-btn{ margin-top:12px; width:100%; }
+
+  /* ============ MODAL ============ */
+  .overlay{
+    position:fixed; inset:0;
+    background:rgba(0,0,0,0.6);
+    display:flex; align-items:flex-start; justify-content:center;
+    padding:30px 16px;
+    overflow-y:auto;
+    z-index:50;
+  }
+  .modal{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px;
+    max-width:480px;
+    width:100%;
+  }
+  .modal-title{ font-family:var(--display); font-size:19px; font-weight:600; margin-bottom:4px; }
+  .modal-actions{ display:flex; justify-content:space-between; gap:10px; margin-top:20px; }
+  .modal-actions-right{ display:flex; gap:8px; }
+
+  .photo-preview{
+    width:100%; aspect-ratio:4/3;
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:8px;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+    color:var(--muted); font-size:12px;
+    margin-top:8px;
+  }
+  .photo-preview img{ width:100%; height:100%; object-fit:cover; }
+
+  /* ============ PUBLISH BAR ============ */
+  .publish-bar{
+    position:fixed;
+    left:0; right:0; bottom:0;
+    background:var(--surface-2);
+    border-top:1px solid var(--gold-deep);
+    padding:14px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    z-index:40;
+  }
+  .publish-status{ font-size:13px; color:var(--muted); }
+
+  .toast{
+    position:fixed; top:20px; left:50%; transform:translateX(-50%);
+    background:var(--surface-2); border:1px solid var(--gold-deep);
+    padding:10px 18px; border-radius:8px; font-size:13px;
+    z-index:60;
+  }
+  .toast.err{ border-color:var(--danger); color:var(--danger); }
+
+  .spin{
+    display:inline-block; width:14px; height:14px;
+    border:2px solid var(--line); border-top-color:var(--gold);
+    border-radius:50%; animation:spin 0.7s linear infinite;
+  }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<div class="shell" id="app"></div>
+
+<script>
+/* ================================================================
+   Configuration — modifiez ces 3 valeurs si vous renommez le dépôt
+   ================================================================ */
+const REPO_OWNER = "Gor-Atidiani";
+const REPO_NAME  = "Gor-Atidiani.github.io";
+const BRANCH     = "main";
+const API = "https://api.github.com";
+
+let state = {
+  token: null,
+  remember: false,
+  data: null,      // { numeroParDefaut, categories }
+  sha: null,       // sha of data.json, needed to commit
+  dirty: false,
+  loading: false,
+  error: null,
+};
+
+/* ---------------- GitHub API helpers ---------------- */
+
+function ghHeaders(){
+  return {
+    "Authorization": "Bearer " + state.token,
+    "Accept": "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28"
+  };
+}
+
+function b64EncodeUnicode(str){
+  return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (m, p1) => String.fromCharCode("0x" + p1)));
+}
+function b64DecodeUnicode(str){
+  return decodeURIComponent(atob(str).split("").map(c => "%" + c.charCodeAt(0).toString(16).padStart(2, "0")).join(""));
+}
+function arrayBufferToBase64(buffer){
+  let binary = "";
+  const bytes = new Uint8Array(buffer);
+  for(let i = 0; i < bytes.byteLength; i++) binary += String.fromCharCode(bytes[i]);
+  return btoa(binary);
+}
+function slugify(str){
+  return str.toString().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase().trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "") || "item";
+}
+function uniqueSlug(base, existingIds){
+  let slug = slugify(base), n = 2;
+  while(existingIds.includes(slug)){ slug = slugify(base) + "-" + n; n++; }
+  return slug;
+}
+function allProductIds(){
+  const ids = [];
+  state.data.categories.forEach(c => c.produits.forEach(p => ids.push(p.id)));
+  return ids;
+}
+function allCategoryIds(){
+  return state.data.categories.map(c => c.id);
+}
+
+async function ghRequest(path, options = {}){
+  const res = await fetch(API + path, { ...options, headers: { ...ghHeaders(), ...(options.headers||{}) } });
+  if(!res.ok){
+    let msg = "Erreur GitHub (" + res.status + ")";
+    try{ const j = await res.json(); if(j.message) msg = j.message; }catch(e){}
+    throw new Error(msg);
+  }
+  return res.json();
+}
+
+async function loadDataJson(){
+  const json = await ghRequest(`/repos/${REPO_OWNER}/${REPO_NAME}/contents/data.json?ref=${BRANCH}`);
+  state.sha = json.sha;
+  state.data = JSON.parse(b64DecodeUnicode(json.content));
+}
+
+async function publishDataJson(message){
+  // refresh sha first to avoid conflicts
+  const latest = await ghRequest(`/repos/${REPO_OWNER}/${REPO_NAME}/contents/data.json?ref=${BRANCH}`);
+  const body = {
+    message: message || "Mise à jour du catalogue via admin",
+    content: b64EncodeUnicode(JSON.stringify(state.data, null, 2)),
+    sha: latest.sha,
+    branch: BRANCH
+  };
+  const result = await ghRequest(`/repos/${REPO_OWNER}/${REPO_NAME}/contents/data.json`, {
+    method: "PUT",
+    body: JSON.stringify(body)
+  });
+  state.sha = result.content.sha;
+  state.dirty = false;
+}
+
+async function uploadImage(file, desiredName){
+  const buf = await file.arrayBuffer();
+  const b64 = arrayBufferToBase64(buf);
+  const path = "images/" + desiredName;
+  let sha = undefined;
+  try{
+    const existing = await ghRequest(`/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}?ref=${BRANCH}`);
+    sha = existing.sha;
+  }catch(e){ /* file doesn't exist yet, that's fine */ }
+  const body = {
+    message: "Ajout/mise à jour photo " + desiredName,
+    content: b64,
+    branch: BRANCH,
+    ...(sha ? { sha } : {})
+  };
+  await ghRequest(`/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`, {
+    method: "PUT",
+    body: JSON.stringify(body)
+  });
+  return path;
+}
+
+/* ---------------- App state / persistence of token ---------------- */
+
+function loadToken(){
+  const t = localStorage.getItem("oraimo_admin_token") || sessionStorage.getItem("oraimo_admin_token");
+  if(t) state.token = t;
+}
+function saveToken(token, remember){
+  state.token = token;
+  if(remember) localStorage.setItem("oraimo_admin_token", token);
+  else sessionStorage.setItem("oraimo_admin_token", token);
+}
+function clearToken(){
+  state.token = null;
+  localStorage.removeItem("oraimo_admin_token");
+  sessionStorage.removeItem("oraimo_admin_token");
+}
+
+/* ---------------- Rendering ---------------- */
+
+const app = document.getElementById("app");
+let modal = null; // { type: 'product'|'category', catId, prodId }
+let toastMsg = null;
+
+function showToast(msg, isErr){
+  toastMsg = { msg, isErr };
+  renderAll();
+  setTimeout(() => { toastMsg = null; renderAll(); }, 3200);
+}
+
+function renderAll(){
+  let html = "";
+  if(toastMsg) html += `<div class="toast ${toastMsg.isErr ? "err" : ""}">${escapeHtml(toastMsg.msg)}</div>`;
+
+  if(!state.token){
+    html += renderLogin();
+  }else if(state.loading){
+    html += `<div class="login-wrap"><p class="login-sub"><span class="spin"></span> Chargement du catalogue…</p></div>`;
+  }else if(state.error){
+    html += renderLogin(state.error);
+  }else{
+    html += renderTop();
+    html += renderSettings();
+    html += renderCategories();
+  }
+
+  app.innerHTML = html;
+
+  if(modal){
+    const modalWrap = document.createElement("div");
+    modalWrap.innerHTML = modal.type === "product" ? renderProductModal() : renderCategoryModal();
+    document.body.appendChild(modalWrap.firstElementChild);
+  }
+
+  if(state.token && !state.loading && !state.error){
+    const bar = document.createElement("div");
+    if(state.dirty){
+      bar.innerHTML = renderPublishBar();
+      document.body.appendChild(bar.firstElementChild);
+    }
+  }
+}
+
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+
+function renderLogin(err){
+  return `
+    <div class="login-wrap">
+      <p class="login-title">Administration</p>
+      <p class="login-sub">Oraimo Dakar Market — gestion du catalogue</p>
+      <div class="card">
+        <label>Token GitHub</label>
+        <input type="password" id="tokenInput" placeholder="ghp_... ou github_pat_...">
+        <div class="check-row">
+          <input type="checkbox" id="rememberCheck">
+          <label style="margin:0; text-transform:none; letter-spacing:0; font-size:13px;" for="rememberCheck">Se souvenir de moi sur cet appareil</label>
+        </div>
+        <button class="btn btn--primary" style="width:100%; margin-top:16px;" onclick="handleLogin()">Se connecter</button>
+        ${err ? `<p class="error-msg">${escapeHtml(err)}</p>` : ""}
+        <p class="help">
+          Ce token permet de modifier votre dépôt GitHub depuis cette page.
+          Créez-en un ici : <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens/new</a><br><br>
+          — Repository access : sélectionnez uniquement <b>${REPO_NAME}</b><br>
+          — Permissions → Contents : <b>Read and write</b><br><br>
+          Ne partagez jamais ce token, et ne partagez pas le lien vers cette page admin publiquement.
+        </p>
+      </div>
+    </div>`;
+}
+
+function renderTop(){
+  return `
+    <div class="top">
+      <div>
+        <div class="top-title">ORAIMO <span>ADMIN</span></div>
+        <div class="top-sub">Gestion du catalogue</div>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <a class="btn btn--small btn--ghost" href="index.html" target="_blank">Voir le site</a>
+        <button class="btn btn--small" onclick="handleLogout()">Déconnexion</button>
+      </div>
+    </div>`;
+}
+
+function renderSettings(){
+  return `
+    <div class="card">
+      <label>Numéro par défaut (appels / WhatsApp)</label>
+      <div class="settings-row">
+        <div><input type="text" id="numeroInput" value="${escapeHtml(state.data.numeroParDefaut)}"></div>
+        <button class="btn btn--small" onclick="saveNumero()">Enregistrer</button>
+      </div>
+      <p class="help">Utilisé pour tout produit qui n'a pas de numéro propre.</p>
+    </div>`;
+}
+
+function renderCategories(){
+  return state.data.categories.map(cat => `
+    <div class="card">
+      <div class="cat-head">
+        <div class="cat-title"><span>${cat.icone || "🛍️"}</span> ${escapeHtml(cat.nom)}</div>
+        <div class="cat-actions">
+          <button class="btn btn--small" onclick="openCategoryModal('${cat.id}')">Modifier</button>
+          <button class="btn btn--small btn--danger" onclick="deleteCategory('${cat.id}')">Supprimer</button>
+        </div>
+      </div>
+      ${cat.produits.map(p => `
+        <div class="prod-row">
+          <div class="prod-thumb">${p.photo ? `<img src="${escapeHtml(p.photo)}" alt="">` : "Sans photo"}</div>
+          <div class="prod-info">
+            <div class="prod-name">${escapeHtml(p.nom)}</div>
+            <div class="prod-price">${p.prix.toLocaleString("fr-FR")} FCFA</div>
+          </div>
+          <div class="prod-actions">
+            <button class="btn btn--small" onclick="openProductModal('${cat.id}','${p.id}')">Modifier</button>
+            <button class="btn btn--small btn--danger" onclick="deleteProduct('${cat.id}','${p.id}')">Suppr.</button>
+          </div>
+        </div>
+      `).join("")}
+      <button class="btn add-prod-btn" onclick="openProductModal('${cat.id}', null)">+ Ajouter un produit</button>
+    </div>
+  `).join("") + `<button class="btn btn--primary" style="width:100%;" onclick="openCategoryModal(null)">+ Nouvelle catégorie</button>`;
+}
+
+function renderPublishBar(){
+  return `
+    <div class="publish-bar">
+      <span class="publish-status">Modifications non publiées</span>
+      <button class="btn btn--primary" id="publishBtn" onclick="handlePublish()">Publier sur le site</button>
+    </div>`;
+}
+
+function findCat(catId){ return state.data.categories.find(c => c.id === catId); }
+function findProd(catId, prodId){ return findCat(catId).produits.find(p => p.id === prodId); }
+
+function renderProductModal(){
+  const isNew = !modal.prodId;
+  const cat = findCat(modal.catId);
+  const prod = isNew ? { nom:"", description:"", prix:"", photo:"", telephone:"" } : findProd(modal.catId, modal.prodId);
+  return `
+    <div class="overlay" onclick="if(event.target===this) closeModal()">
+      <div class="modal">
+        <p class="modal-title">${isNew ? "Nouveau produit" : "Modifier le produit"}</p>
+        <p class="help" style="margin-top:0;">Catégorie : ${escapeHtml(cat.nom)}</p>
+
+        <label>Nom du produit</label>
+        <input type="text" id="f_nom" value="${escapeHtml(prod.nom)}">
+
+        <label>Description</label>
+        <textarea id="f_description">${escapeHtml(prod.description||"")}</textarea>
+
+        <div class="field-row">
+          <div>
+            <label>Prix (FCFA)</label>
+            <input type="number" id="f_prix" value="${prod.prix}" min="0" step="500">
+          </div>
+          <div>
+            <label>Téléphone (optionnel)</label>
+            <input type="text" id="f_telephone" value="${escapeHtml(prod.telephone||"")}" placeholder="Numéro par défaut si vide">
+          </div>
+        </div>
+
+        <label>Photo</label>
+        <div class="photo-preview" id="photoPreview">
+          ${prod.photo ? `<img src="${escapeHtml(prod.photo)}" alt="">` : "Aucune photo"}
+        </div>
+        <input type="file" id="f_photo" accept="image/*" style="margin-top:8px;">
+        <p class="help" id="photoStatus"></p>
+
+        <p class="error-msg" id="formError"></p>
+
+        <div class="modal-actions">
+          <button class="btn" onclick="closeModal()">Annuler</button>
+          <div class="modal-actions-right">
+            <button class="btn btn--primary" onclick="saveProduct('${modal.catId}', ${modal.prodId ? `'${modal.prodId}'` : "null"})">Enregistrer</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderCategoryModal(){
+  const isNew = !modal.catId;
+  const cat = isNew ? { nom:"", icone:"" } : findCat(modal.catId);
+  return `
+    <div class="overlay" onclick="if(event.target===this) closeModal()">
+      <div class="modal">
+        <p class="modal-title">${isNew ? "Nouvelle catégorie" : "Modifier la catégorie"}</p>
+
+        <label>Nom de la catégorie</label>
+        <input type="text" id="f_cat_nom" value="${escapeHtml(cat.nom)}">
+
+        <label>Icône (emoji, optionnel)</label>
+        <input type="text" id="f_cat_icone" value="${escapeHtml(cat.icone||"")}" placeholder="🎧">
+
+        <p class="error-msg" id="formError"></p>
+
+        <div class="modal-actions">
+          <button class="btn" onclick="closeModal()">Annuler</button>
+          <button class="btn btn--primary" onclick="saveCategory(${isNew ? "null" : `'${cat.id}'`})">Enregistrer</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+/* ---------------- Actions ---------------- */
+
+async function handleLogin(){
+  const token = document.getElementById("tokenInput").value.trim();
+  const remember = document.getElementById("rememberCheck").checked;
+  if(!token) return;
+  saveToken(token, remember);
+  state.loading = true;
+  state.error = null;
+  renderAll();
+  try{
+    await loadDataJson();
+    state.loading = false;
+    renderAll();
+  }catch(e){
+    state.loading = false;
+    state.error = "Connexion impossible : " + e.message;
+    clearToken();
+    renderAll();
+  }
+}
+
+function handleLogout(){
+  clearToken();
+  state.data = null;
+  renderAll();
+}
+
+function saveNumero(){
+  state.data.numeroParDefaut = document.getElementById("numeroInput").value.trim();
+  state.dirty = true;
+  showToast("Numéro mis à jour — pense à publier");
+}
+
+function openProductModal(catId, prodId){ modal = { type:"product", catId, prodId }; renderAll(); }
+function openCategoryModal(catId){ modal = { type:"category", catId }; renderAll(); }
+function closeModal(){ modal = null; renderAll(); }
+
+document.addEventListener("change", (e) => {
+  if(e.target && e.target.id === "f_photo"){
+    const file = e.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      document.getElementById("photoPreview").innerHTML = `<img src="${reader.result}" alt="">`;
+    };
+    reader.readAsDataURL(file);
+  }
+});
+
+async function saveProduct(catId, prodId){
+  const nom = document.getElementById("f_nom").value.trim();
+  const description = document.getElementById("f_description").value.trim();
+  const prix = parseInt(document.getElementById("f_prix").value, 10);
+  const telephone = document.getElementById("f_telephone").value.trim();
+  const fileInput = document.getElementById("f_photo");
+  const errEl = document.getElementById("formError");
+
+  if(!nom || isNaN(prix) || prix < 0){
+    errEl.textContent = "Merci de renseigner au moins un nom et un prix valide.";
+    return;
+  }
+
+  const cat = findCat(catId);
+  let prod = prodId ? findProd(catId, prodId) : null;
+  const isNew = !prod;
+
+  let photoPath = prod ? prod.photo : "";
+
+  const file = fileInput.files[0];
+  if(file){
+    errEl.textContent = "";
+    const statusEl = document.getElementById("photoStatus");
+    statusEl.innerHTML = '<span class="spin"></span> Envoi de la photo…';
+    try{
+      const ext = (file.name.split(".").pop() || "jpg").toLowerCase();
+      const idForName = isNew ? uniqueSlug(nom, allProductIds()) : prodId;
+      photoPath = await uploadImage(file, idForName + "." + ext);
+      statusEl.textContent = "Photo envoyée ✓";
+    }catch(e){
+      statusEl.textContent = "";
+      errEl.textContent = "Échec de l'envoi de la photo : " + e.message;
+      return;
+    }
+  }
+
+  if(isNew){
+    const id = uniqueSlug(nom, allProductIds());
+    cat.produits.push({ id, nom, description, prix, photo: photoPath, ...(telephone ? { telephone } : {}) });
+  }else{
+    prod.nom = nom;
+    prod.description = description;
+    prod.prix = prix;
+    prod.photo = photoPath;
+    if(telephone) prod.telephone = telephone; else delete prod.telephone;
+  }
+
+  state.dirty = true;
+  modal = null;
+  renderAll();
+  showToast(isNew ? "Produit ajouté — pense à publier" : "Produit modifié — pense à publier");
+}
+
+function deleteProduct(catId, prodId){
+  if(!confirm("Supprimer ce produit ? Cette action sera appliquée à la publication.")) return;
+  const cat = findCat(catId);
+  cat.produits = cat.produits.filter(p => p.id !== prodId);
+  state.dirty = true;
+  renderAll();
+  showToast("Produit supprimé — pense à publier");
+}
+
+function saveCategory(catId){
+  const nom = document.getElementById("f_cat_nom").value.trim();
+  const icone = document.getElementById("f_cat_icone").value.trim();
+  const errEl = document.getElementById("formError");
+  if(!nom){ errEl.textContent = "Le nom est obligatoire."; return; }
+
+  if(!catId){
+    const id = uniqueSlug(nom, allCategoryIds());
+    state.data.categories.push({ id, nom, icone, produits: [] });
+  }else{
+    const cat = findCat(catId);
+    cat.nom = nom;
+    cat.icone = icone;
+  }
+  state.dirty = true;
+  modal = null;
+  renderAll();
+  showToast("Catégorie enregistrée — pense à publier");
+}
+
+function deleteCategory(catId){
+  const cat = findCat(catId);
+  if(!confirm(`Supprimer la catégorie "${cat.nom}" et ses ${cat.produits.length} produit(s) ?`)) return;
+  state.data.categories = state.data.categories.filter(c => c.id !== catId);
+  state.dirty = true;
+  renderAll();
+  showToast("Catégorie supprimée — pense à publier");
+}
+
+async function handlePublish(){
+  const btn = document.getElementById("publishBtn");
+  if(btn){ btn.disabled = true; btn.innerHTML = '<span class="spin"></span> Publication…'; }
+  try{
+    await publishDataJson();
+    renderAll();
+    showToast("Catalogue publié ! Le site se met à jour dans 1-2 minutes.");
+  }catch(e){
+    showToast("Échec de la publication : " + e.message, true);
+    renderAll();
+  }
+}
+
+/* ---------------- Init ---------------- */
+
+loadToken();
+if(state.token){
+  state.loading = true;
+  renderAll();
+  loadDataJson().then(() => { state.loading = false; renderAll(); })
+    .catch(e => { state.loading = false; state.error = "Connexion impossible : " + e.message; clearToken(); renderAll(); });
+}else{
+  renderAll();
+}
+</script>
+</body>
+</html>
