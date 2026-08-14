@@ -66,6 +66,10 @@
   }
 
   /* ===================== HEADER ===================== */
+  .brand-bar{
+    height:4px;
+    background:var(--gold);
+  }
   .site-header{
     padding:36px 0 28px;
     border-bottom:1px solid var(--line);
@@ -86,6 +90,84 @@
     letter-spacing:0.04em;
     text-transform:uppercase;
     font-family:var(--mono);
+  }
+  .badges{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:16px;
+  }
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:7px 13px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    background:var(--surface);
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  .badge--link{
+    border-color:var(--gold-deep);
+    color:var(--gold);
+    transition:transform 160ms ease, background 160ms ease;
+  }
+  .badge--link:hover{ transform:translateY(-2px); background:var(--surface-2); }
+
+  /* ===================== FOOTER ===================== */
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:28px;
+  }
+  @media (min-width:640px){
+    .footer-grid{ grid-template-columns:1.3fr 1fr 1fr; }
+  }
+  .footer-brand{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:19px;
+  }
+  .footer-brand span{ color:var(--gold); }
+  .footer-text{
+    margin:8px 0 0;
+    font-size:13px;
+    line-height:1.6;
+    color:var(--muted);
+    max-width:34ch;
+  }
+  .footer-label{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin:0 0 10px;
+  }
+  .footer-link{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:13px;
+    color:var(--text);
+    padding:6px 0;
+    transition:color 160ms ease;
+  }
+  .footer-link:hover{ color:var(--gold); }
+  .footer-bottom{
+    margin-top:32px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--muted);
+    text-align:center;
   }
 
   /* ===================== VIEW TRANSITION ===================== */
@@ -337,15 +419,39 @@
 </head>
 <body>
 
+<div class="brand-bar"></div>
 <div class="shell">
   <header class="site-header">
     <div class="wordmark">ORAIMO <span>DAKAR MARKET</span></div>
-    <p class="tagline">Produits Oraimo authentiques — livraison rapide sur Dakar</p>
+    <p class="tagline">Écouteurs, montres, powerbanks &amp; accessoires connectés</p>
+    <div class="badges">
+      <span class="badge">✓ 100% authentique</span>
+      <span class="badge">🛵 Livraison partout au Sénégal</span>
+      <a class="badge badge--link" href="https://wa.me/221786066137" target="_blank" rel="noopener">💬 78 606 61 37</a>
+    </div>
   </header>
 
   <div id="app"></div>
 
-  <footer class="site-footer">Oraimo Dakar Market — Livraison rapide sur Dakar — TikTok & Instagram @oraimodakarmarket</footer>
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-block">
+        <div class="footer-brand">ORAIMO <span>DAKAR MARKET</span></div>
+        <p class="footer-text">Produits Oraimo 100% authentiques. Livraison partout au Sénégal, rapide sur Dakar.</p>
+      </div>
+      <div class="footer-block">
+        <p class="footer-label">Contact</p>
+        <a class="footer-link" href="tel:+221786066137">📞 78 606 61 37</a>
+        <a class="footer-link" href="https://wa.me/221786066137" target="_blank" rel="noopener">💬 WhatsApp</a>
+      </div>
+      <div class="footer-block">
+        <p class="footer-label">Réseaux</p>
+        <a class="footer-link" href="https://www.tiktok.com/@oraimodakarmarket" target="_blank" rel="noopener">🎵 TikTok · @oraimodakarmarket</a>
+        <a class="footer-link" href="https://www.instagram.com/oraimodakarmarket/" target="_blank" rel="noopener">📷 Instagram · @oraimodakarmarket</a>
+      </div>
+    </div>
+    <p class="footer-bottom">© Oraimo Dakar Market — Catalogue en ligne</p>
+  </footer>
 </div>
 
 <script>
@@ -375,16 +481,16 @@ const CATALOGUE = [
     nom: "Écouteurs",
     icone: "🎧",
     produits: [
-      { id: "necklace-oeb-611", nom: "Necklace OEB-611", description: "Écouteurs neckband, câble collier léger, autonomie confortable pour toute la journée.", prix: 10000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.10.09%20%281%29.jpeg" },
-      { id: "spacebuds-air-otw-324s", nom: "Spacebuds Air OTW-324S", description: "Écouteurs TWS légers et compacts, son clair pour un usage quotidien.", prix: 10000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.10.09.jpeg" },
-      { id: "freepods-neo-otw-330s", nom: "Freepods Neo OTW-330S", description: "Écouteurs sans fil intra-auriculaires, bonne tenue et confort prolongé.", prix: 13000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.10.11%20%281%29.jpeg" },
-      { id: "spacebuds-neo-plus-otw-323p", nom: "Spacebuds Neo+ OTW-323P", description: "Écouteurs TWS avec basses renforcées, idéal pour la musique et les appels.", prix: 15000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.10.10.jpeg" },
-      { id: "opensnap-opn-373", nom: "OpenSnap OPN-373", description: "Écouteurs open-ear à clip, ne bloquent pas l'oreille, confortables pour le sport.", prix: 17000, photo: "" },
-      { id: "spacebuds-otw-630", nom: "Spacebuds OTW-630", description: "Écouteurs sans fil polyvalents, son équilibré et autonomie solide.", prix: 25000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.10.11%20%282%29.jpeg" },
-      { id: "freepods-4-oeb-e105d", nom: "FreePods 4 OEB-E105D", description: "Écouteurs TWS nouvelle génération, bonne accroche et son soigné.", prix: 25000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.10.11%20%284%29.jpeg" },
-      { id: "openarc-opn-675", nom: "OpenArc OPN-675", description: "Écouteurs open-ear format arceau, portés toute la journée sans gêne.", prix: 25000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.10.11%20%283%29.jpeg" },
-      { id: "opencirclet-2-opn-672", nom: "OpenCirclet 2 OPN-672", description: "Écouteurs open-ear à crochet d'oreille, stables même en mouvement.", prix: 25000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.10.12%20%281%29.jpeg" },
-      { id: "spacebuds-pro", nom: "Spacebuds Pro", description: "Écouteurs TWS haut de gamme, son premium et autonomie étendue.", prix: 50000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.10.12.jpeg" }
+      { id: "necklace-oeb-611", nom: "Necklace OEB-611", description: "Écouteurs neckband, câble collier léger, autonomie confortable pour toute la journée.", prix: 10000, photo: "images/necklace-oeb-611.jpg" },
+      { id: "spacebuds-air-otw-324s", nom: "Spacebuds Air OTW-324S", description: "Écouteurs TWS légers et compacts, son clair pour un usage quotidien.", prix: 10000, photo: "images/spacebuds-air-otw-324s.jpg" },
+      { id: "freepods-neo-otw-330s", nom: "Freepods Neo OTW-330S", description: "Écouteurs sans fil intra-auriculaires, bonne tenue et confort prolongé.", prix: 13000, photo: "images/freepods-neo-otw-330s.jpg" },
+      { id: "spacebuds-neo-plus-otw-323p", nom: "Spacebuds Neo+ OTW-323P", description: "Écouteurs TWS avec basses renforcées, idéal pour la musique et les appels.", prix: 15000, photo: "images/spacebuds-neo-plus-otw-323p.jpg" },
+      { id: "opensnap-opn-373", nom: "OpenSnap OPN-373", description: "Écouteurs open-ear à clip, ne bloquent pas l'oreille, confortables pour le sport.", prix: 17000, photo: "images/opensnap-opn-373.jpg" },
+      { id: "spacebuds-otw-630", nom: "Spacebuds OTW-630", description: "Écouteurs sans fil polyvalents, son équilibré et autonomie solide.", prix: 25000, photo: "images/spacebuds-otw-630.jpg" },
+      { id: "freepods-4-oeb-e105d", nom: "FreePods 4 OEB-E105D", description: "Écouteurs TWS nouvelle génération, bonne accroche et son soigné.", prix: 25000, photo: "images/freepods-4-oeb-e105d.jpg" },
+      { id: "openarc-opn-675", nom: "OpenArc OPN-675", description: "Écouteurs open-ear format arceau, portés toute la journée sans gêne.", prix: 25000, photo: "images/openarc-opn-675.jpg" },
+      { id: "opencirclet-2-opn-672", nom: "OpenCirclet 2 OPN-672", description: "Écouteurs open-ear à crochet d'oreille, stables même en mouvement.", prix: 25000, photo: "images/opencirclet-2-opn-672.jpg" },
+      { id: "spacebuds-pro", nom: "Spacebuds Pro", description: "Écouteurs TWS haut de gamme, son premium et autonomie étendue.", prix: 50000, photo: "images/spacebuds-pro.jpg" }
     ]
   },
   {
@@ -392,13 +498,13 @@ const CATALOGUE = [
     nom: "Montres Connectées",
     icone: "⌚",
     produits: [
-      { id: "watch-4-plus-osw-801", nom: "Watch 4 Plus OSW-801", description: "Montre connectée avec suivi santé et notifications, écran lisible au quotidien.", prix: 15000, photo: "" },
-      { id: "watch-5-lite-osw-904", nom: "Watch 5 Lite OSW-904", description: "Montre connectée légère, essentielle pour le suivi d'activité et les notifications.", prix: 15000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.16.22.jpeg" },
-      { id: "watch-6r-osw-823", nom: "Watch 6R OSW-823", description: "Montre connectée ronde, design classique et fonctions de suivi santé.", prix: 15000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.16.23%20%282%29.jpeg" },
-      { id: "watch-2pro-osw-32", nom: "Watch 2Pro OSW-32", description: "Montre connectée avec fonctions avancées de suivi sportif et santé.", prix: 25000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.16.21%20%281%29.jpeg" },
-      { id: "watch-nova-2-osw-814", nom: "Watch Nova 2 OSW-814", description: "Montre connectée à l'écran net, notifications et suivi d'activité au quotidien.", prix: 25000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.16.21.jpeg" },
-      { id: "watch-nova-2r-osw-834", nom: "Watch Nova 2R OSW-834", description: "Montre connectée format rond, suivi santé et autonomie longue durée.", prix: 25000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.16.23%20%281%29.jpeg" },
-      { id: "watch-pro-x", nom: "Watch Pro X", description: "Montre connectée haut de gamme, suivi sportif complet et finitions premium.", prix: 65000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.16.22%20%281%29.jpeg" }
+      { id: "watch-4-plus-osw-801", nom: "Watch 4 Plus OSW-801", description: "Montre connectée avec suivi santé et notifications, écran lisible au quotidien.", prix: 15000, photo: "images/watch-4-plus-osw-801.jpg" },
+      { id: "watch-5-lite-osw-904", nom: "Watch 5 Lite OSW-904", description: "Montre connectée légère, essentielle pour le suivi d'activité et les notifications.", prix: 15000, photo: "images/watch-5-lite-osw-904.jpg" },
+      { id: "watch-6r-osw-823", nom: "Watch 6R OSW-823", description: "Montre connectée ronde, design classique et fonctions de suivi santé.", prix: 15000, photo: "images/watch-6r-osw-823.jpg" },
+      { id: "watch-2pro-osw-32", nom: "Watch 2Pro OSW-32", description: "Montre connectée avec fonctions avancées de suivi sportif et santé.", prix: 25000, photo: "images/watch-2pro-osw-32.jpg" },
+      { id: "watch-nova-2-osw-814", nom: "Watch Nova 2 OSW-814", description: "Montre connectée à l'écran net, notifications et suivi d'activité au quotidien.", prix: 25000, photo: "images/watch-nova-2-osw-814.jpg" },
+      { id: "watch-nova-2r-osw-834", nom: "Watch Nova 2R OSW-834", description: "Montre connectée format rond, suivi santé et autonomie longue durée.", prix: 25000, photo: "images/watch-nova-2r-osw-834.jpg" },
+      { id: "watch-pro-x", nom: "Watch Pro X", description: "Montre connectée haut de gamme, suivi sportif complet et finitions premium.", prix: 65000, photo: "images/watch-pro-x.jpg" }
     ]
   },
   {
@@ -406,14 +512,14 @@ const CATALOGUE = [
     nom: "Power Bank",
     icone: "🔋",
     produits: [
-      { id: "slicelink-12w-opb-p5101", nom: "SliceLink 12w 10000mAh OPB-P5101", description: "Batterie externe 10 000 mAh, charge 12W, format fin et facile à transporter.", prix: 10000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.30.24%20%281%29.jpeg" },
-      { id: "powerflow-l1-opb-1103", nom: "PowerFlow L1 10000mAh OPB-1103", description: "Batterie externe 10 000 mAh, compacte, pour recharger votre téléphone en déplacement.", prix: 11000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.30.24.jpeg" },
-      { id: "powernova-l11-opb-7103c", nom: "PowerNova L11 10000mAh OPB-7103C", description: "Batterie externe 10 000 mAh, charge fiable pour un usage quotidien.", prix: 12000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.30.25.jpeg" },
-      { id: "powernova-l21-opb-7203c", nom: "PowerNova L21 20000mAh OPB-7203C", description: "Batterie externe 20 000 mAh, grande capacité pour plusieurs recharges.", prix: 17000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.30.25%20%283%29.jpeg" },
-      { id: "traveler-link-20-opb-p5201", nom: "Traveler Link 20 20000mAh OPB-P5201", description: "Batterie externe 20 000 mAh, pensée pour les voyages et longues journées.", prix: 15000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.30.25%20%282%29.jpeg" },
-      { id: "magpower-15-opb-7102w", nom: "Magpower 15 OPB-7102W", description: "Batterie externe magnétique 15W, se fixe directement au dos du téléphone.", prix: 18000, photo: "" },
-      { id: "traveler-link-27-opb-p5271", nom: "Traveler Link 27 27000mAh OPB-P5271", description: "Batterie externe 27 000 mAh, grande autonomie pour plusieurs appareils.", prix: 22000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.30.27%20%281%29.jpeg" },
-      { id: "powerjet-501-opb-750sq", nom: "PowerJet 501 50000mAh OPB-750SQ", description: "Batterie externe 50 000 mAh, très grande capacité pour plusieurs jours d'autonomie.", prix: 30000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.30.27.jpeg" }
+      { id: "slicelink-12w-opb-p5101", nom: "SliceLink 12w 10000mAh OPB-P5101", description: "Batterie externe 10 000 mAh, charge 12W, format fin et facile à transporter.", prix: 10000, photo: "images/slicelink-12w-opb-p5101.jpg" },
+      { id: "powerflow-l1-opb-1103", nom: "PowerFlow L1 10000mAh OPB-1103", description: "Batterie externe 10 000 mAh, compacte, pour recharger votre téléphone en déplacement.", prix: 11000, photo: "images/powerflow-l1-opb-1103.jpg" },
+      { id: "powernova-l11-opb-7103c", nom: "PowerNova L11 10000mAh OPB-7103C", description: "Batterie externe 10 000 mAh, charge fiable pour un usage quotidien.", prix: 12000, photo: "images/powernova-l11-opb-7103c.jpg" },
+      { id: "powernova-l21-opb-7203c", nom: "PowerNova L21 20000mAh OPB-7203C", description: "Batterie externe 20 000 mAh, grande capacité pour plusieurs recharges.", prix: 17000, photo: "images/powernova-l21-opb-7203c.jpg" },
+      { id: "traveler-link-20-opb-p5201", nom: "Traveler Link 20 20000mAh OPB-P5201", description: "Batterie externe 20 000 mAh, pensée pour les voyages et longues journées.", prix: 15000, photo: "images/traveler-link-20-opb-p5201.jpg" },
+      { id: "magpower-15-opb-7102w", nom: "Magpower 15 OPB-7102W", description: "Batterie externe magnétique 15W, se fixe directement au dos du téléphone.", prix: 18000, photo: "images/magpower-15-opb-7102w.jpg" },
+      { id: "traveler-link-27-opb-p5271", nom: "Traveler Link 27 27000mAh OPB-P5271", description: "Batterie externe 27 000 mAh, grande autonomie pour plusieurs appareils.", prix: 22000, photo: "images/traveler-link-27-opb-p5271.jpg" },
+      { id: "powerjet-501-opb-750sq", nom: "PowerJet 501 50000mAh OPB-750SQ", description: "Batterie externe 50 000 mAh, très grande capacité pour plusieurs jours d'autonomie.", prix: 30000, photo: "images/powerjet-501-opb-750sq.jpg" }
     ]
   },
   {
@@ -421,15 +527,15 @@ const CATALOGUE = [
     nom: "Chargeurs",
     icone: "🔌",
     produits: [
-      { id: "powercube-20-ocw-e106s-cc54", nom: "PowerCube 20 20w Type-C to Type-C OCW-E106S+CC54", description: "Chargeur 20W, câble Type-C vers Type-C inclus, charge rapide et compacte.", prix: 6000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.33.05.jpeg" },
-      { id: "powercube-202-lightning-ocw-5202ecl", nom: "PowerCube 202 20w Type-C to Lightning OCW-5202ECL", description: "Chargeur 20W, câble Type-C vers Lightning inclus, compatible iPhone.", prix: 6000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.33.05%20%281%29.jpeg" },
-      { id: "powercube-201-rapid-ocw-5203ecc", nom: "PowerCube 201 Rapid Charge 20w Type-C to Type-C OCW-5203ECC", description: "Chargeur 20W charge rapide, câble Type-C vers Type-C inclus.", prix: 6000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.33.05%20%282%29.jpeg" },
-      { id: "powercube-202-ocw-5202ecc", nom: "PowerCube 202 20w Type-C to Type-C OCW-5202ECC", description: "Chargeur 20W, câble Type-C vers Type-C inclus, format compact.", prix: 6000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.33.07.jpeg" },
-      { id: "powergan-251-ocw-5251ecc", nom: "PowerGan 251 Ultra Fast 25w Type-C OCW-5251ECC", description: "Chargeur GaN 25W ultra rapide, câble Type-C inclus.", prix: 7000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.33.08%20%283%29.jpeg" },
-      { id: "powergan-351-ocw-5351ecc", nom: "PowerGan 351 35w Ultra Fast OCW-5351ECC", description: "Chargeur GaN 35W ultra rapide, idéal pour smartphone et petits appareils.", prix: 8000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.33.09%20%281%29.jpeg" },
-      { id: "powergan-451-ocw-5451ecc", nom: "PowerGan 451 45w Ultra Fast OCW-5451ECC", description: "Chargeur GaN 45W ultra rapide, compatible smartphones et tablettes.", prix: 9000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.33.09.jpeg" },
-      { id: "powergan-33-pro-ocw-7331e-ec54", nom: "PowerGan 33 Pro GAN Charging Type-C OCW-7331E+EC54", description: "Chargeur GaN compact, charge rapide, câble Type-C inclus.", prix: 10000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.33.09%20%282%29.jpeg" },
-      { id: "hypergan-65", nom: "HyperGan 65", description: "Chargeur GaN 65W, assez puissant pour recharger un petit ordinateur portable.", prix: 17000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.33.09%20%283%29.jpeg" }
+      { id: "powercube-20-ocw-e106s-cc54", nom: "PowerCube 20 20w Type-C to Type-C OCW-E106S+CC54", description: "Chargeur 20W, câble Type-C vers Type-C inclus, charge rapide et compacte.", prix: 6000, photo: "images/powercube-20-ocw-e106s-cc54.jpg" },
+      { id: "powercube-202-lightning-ocw-5202ecl", nom: "PowerCube 202 20w Type-C to Lightning OCW-5202ECL", description: "Chargeur 20W, câble Type-C vers Lightning inclus, compatible iPhone.", prix: 6000, photo: "images/powercube-202-lightning-ocw-5202ecl.jpg" },
+      { id: "powercube-201-rapid-ocw-5203ecc", nom: "PowerCube 201 Rapid Charge 20w Type-C to Type-C OCW-5203ECC", description: "Chargeur 20W charge rapide, câble Type-C vers Type-C inclus.", prix: 6000, photo: "images/powercube-201-rapid-ocw-5203ecc.jpg" },
+      { id: "powercube-202-ocw-5202ecc", nom: "PowerCube 202 20w Type-C to Type-C OCW-5202ECC", description: "Chargeur 20W, câble Type-C vers Type-C inclus, format compact.", prix: 6000, photo: "images/powercube-202-ocw-5202ecc.jpg" },
+      { id: "powergan-251-ocw-5251ecc", nom: "PowerGan 251 Ultra Fast 25w Type-C OCW-5251ECC", description: "Chargeur GaN 25W ultra rapide, câble Type-C inclus.", prix: 7000, photo: "images/powergan-251-ocw-5251ecc.jpg" },
+      { id: "powergan-351-ocw-5351ecc", nom: "PowerGan 351 35w Ultra Fast OCW-5351ECC", description: "Chargeur GaN 35W ultra rapide, idéal pour smartphone et petits appareils.", prix: 8000, photo: "images/powergan-351-ocw-5351ecc.jpg" },
+      { id: "powergan-451-ocw-5451ecc", nom: "PowerGan 451 45w Ultra Fast OCW-5451ECC", description: "Chargeur GaN 45W ultra rapide, compatible smartphones et tablettes.", prix: 9000, photo: "images/powergan-451-ocw-5451ecc.jpg" },
+      { id: "powergan-33-pro-ocw-7331e-ec54", nom: "PowerGan 33 Pro GAN Charging Type-C OCW-7331E+EC54", description: "Chargeur GaN compact, charge rapide, câble Type-C inclus.", prix: 10000, photo: "images/powergan-33-pro-ocw-7331e-ec54.jpg" },
+      { id: "hypergan-65", nom: "HyperGan 65", description: "Chargeur GaN 65W, assez puissant pour recharger un petit ordinateur portable.", prix: 17000, photo: "images/hypergan-65.jpg" }
     ]
   },
   {
@@ -437,9 +543,9 @@ const CATALOGUE = [
     nom: "Casque",
     icone: "🎶",
     produits: [
-      { id: "boompop-lite-ohp-317", nom: "BoomPop Lite OHP-317", description: "Casque audio léger, confortable pour un usage quotidien.", prix: 16000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.34.02.jpeg" },
-      { id: "boompop-2s-ohp-610s", nom: "BoomPop 2S OHP-610S", description: "Casque audio avec son renforcé, bon maintien sur les oreilles.", prix: 18000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.34.02%20%281%29.jpeg" },
-      { id: "boompop-pro-ohp-917", nom: "BoomPop Pro OHP-917", description: "Casque audio haut de gamme, confort renforcé et son puissant.", prix: 25000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.34.03.jpeg" }
+      { id: "boompop-lite-ohp-317", nom: "BoomPop Lite OHP-317", description: "Casque audio léger, confortable pour un usage quotidien.", prix: 16000, photo: "images/boompop-lite-ohp-317.jpg" },
+      { id: "boompop-2s-ohp-610s", nom: "BoomPop 2S OHP-610S", description: "Casque audio avec son renforcé, bon maintien sur les oreilles.", prix: 18000, photo: "images/boompop-2s-ohp-610s.jpg" },
+      { id: "boompop-pro-ohp-917", nom: "BoomPop Pro OHP-917", description: "Casque audio haut de gamme, confort renforcé et son puissant.", prix: 25000, photo: "images/boompop-pro-ohp-917.jpg" }
     ]
   },
   {
@@ -447,8 +553,8 @@ const CATALOGUE = [
     nom: "Enceinte",
     icone: "🔊",
     produits: [
-      { id: "spacebox-obs-382", nom: "SpaceBox OBS-382", description: "Enceinte portable compacte, son clair pour un usage quotidien.", prix: 15000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.35.05%20%281%29.jpeg" },
-      { id: "spacebox-active-obs-680", nom: "SpaceBox Active OBS-680", description: "Enceinte portable puissante, idéale pour l'extérieur et les soirées.", prix: 25000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.35.05.jpeg" }
+      { id: "spacebox-obs-382", nom: "SpaceBox OBS-382", description: "Enceinte portable compacte, son clair pour un usage quotidien.", prix: 15000, photo: "images/spacebox-obs-382.jpg" },
+      { id: "spacebox-active-obs-680", nom: "SpaceBox Active OBS-680", description: "Enceinte portable puissante, idéale pour l'extérieur et les soirées.", prix: 25000, photo: "images/spacebox-active-obs-680.jpg" }
     ]
   },
   {
@@ -456,7 +562,7 @@ const CATALOGUE = [
     nom: "Microphone",
     icone: "🎙️",
     produits: [
-      { id: "voxmic-omh-692", nom: "Voxmic OMH-692", description: "Microphone pratique pour les enregistrements, appels et lives.", prix: 37000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.35.31.jpeg" }
+      { id: "voxmic-omh-692", nom: "Voxmic OMH-692", description: "Microphone pratique pour les enregistrements, appels et lives.", prix: 37000, photo: "images/voxmic-omh-692.jpg" }
     ]
   },
   {
@@ -464,9 +570,9 @@ const CATALOGUE = [
     nom: "Support Téléphone",
     icone: "📱",
     produits: [
-      { id: "hydra-8-ocm-30", nom: "Hydra 8 OCM-30", description: "Support téléphone stable, pratique pour le bureau ou la maison.", prix: 6000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.36.26.jpeg" },
-      { id: "hydra-7-ocm-14", nom: "Hydra 7 OCM-14", description: "Support téléphone compact, facile à transporter.", prix: 7000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.36.27.jpeg" },
-      { id: "hydra-6-ocm-31", nom: "Hydra 6 OCM-31", description: "Support téléphone réglable, plusieurs angles de visionnage.", prix: 8000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.36.25.jpeg" }
+      { id: "hydra-8-ocm-30", nom: "Hydra 8 OCM-30", description: "Support téléphone stable, pratique pour le bureau ou la maison.", prix: 6000, photo: "images/hydra-8-ocm-30.jpg" },
+      { id: "hydra-7-ocm-14", nom: "Hydra 7 OCM-14", description: "Support téléphone compact, facile à transporter.", prix: 7000, photo: "images/hydra-7-ocm-14.jpg" },
+      { id: "hydra-6-ocm-31", nom: "Hydra 6 OCM-31", description: "Support téléphone réglable, plusieurs angles de visionnage.", prix: 8000, photo: "images/hydra-6-ocm-31.jpg" }
     ]
   },
   {
@@ -474,7 +580,7 @@ const CATALOGUE = [
     nom: "Mini Ventilateur",
     icone: "🌀",
     produits: [
-      { id: "smarthandheldfan-2-ohf-201a", nom: "SmartHandheldFan 2 OHF-201A", description: "Mini ventilateur portable, pratique à glisser dans le sac pour les journées chaudes.", prix: 12000, photo: "images/WhatsApp%20Image%202026-08-09%20at%2019.37.09.jpeg" }
+      { id: "smarthandheldfan-2-ohf-201a", nom: "SmartHandheldFan 2 OHF-201A", description: "Mini ventilateur portable, pratique à glisser dans le sac pour les journées chaudes.", prix: 12000, photo: "images/smarthandheldfan-2-ohf-201a.jpg" }
     ]
   }
 ];
