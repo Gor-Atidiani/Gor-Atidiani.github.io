@@ -392,6 +392,10 @@ function showToast(msg, isErr){
 }
 
 function renderAll(){
+  // Retire les anciennes fenêtres modales / barres avant d'en réafficher,
+  // sinon elles restent bloquées à l'écran d'un rendu à l'autre.
+  document.querySelectorAll(".overlay, .publish-bar").forEach(el => el.remove());
+
   let html = "";
   if(toastMsg) html += `<div class="toast ${toastMsg.isErr ? "err" : ""}">${escapeHtml(toastMsg.msg)}</div>`;
 
