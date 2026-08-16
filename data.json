@@ -369,6 +369,13 @@
           "description": "Mini ventilateur portable, pratique à glisser dans le sac pour les journées chaudes.",
           "prix": 12000,
           "photo": "images/smarthandheldfan-2-ohf-201a.jpg"
+        },
+        {
+          "id": "test",
+          "nom": "test",
+          "description": "tesy produit",
+          "prix": 500,
+          "photo": ""
         }
       ]
     }
