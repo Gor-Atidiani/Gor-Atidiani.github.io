@@ -446,13 +446,6 @@ function renderLogin(err){
         </div>
         <button class="btn btn--primary" style="width:100%; margin-top:16px;" onclick="handleLogin()">Se connecter</button>
         ${err ? `<p class="error-msg">${escapeHtml(err)}</p>` : ""}
-        <p class="help">
-          Ce token permet de modifier votre dépôt GitHub depuis cette page.
-          Créez-en un ici : <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens/new</a><br><br>
-          — Repository access : sélectionnez uniquement <b>${REPO_NAME}</b><br>
-          — Permissions → Contents : <b>Read and write</b><br><br>
-          Ne partagez jamais ce token, et ne partagez pas le lien vers cette page admin publiquement.
-        </p>
       </div>
     </div>`;
 }
