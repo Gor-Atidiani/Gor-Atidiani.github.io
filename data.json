@@ -269,9 +269,10 @@
         {
           "id": "hypergan-65",
           "nom": "HyperGan 65",
-          "description": "Chargeur GaN 65W, assez puissant pour recharger un petit ordinateur portable.",
+          "description": "Oraimo HyperGaN 65 \n⚡ Puissance maximale : 65 W\n🔌 3 ports : 2 × USB-C + 1 × USB-A\n🚀 Technologie GaN : format compact, meilleure efficacité et moins de chaleur\n💻 Compatible avec les ordinateurs portables, smartphones, tablettes, montres et écouteurs\n⚡ Charge rapide PD, PE et QC\n🔋 Chaque port peut délivrer jusqu’à 65 W lorsqu’il est utilisé seul\n🔄 Distribution intelligente de la puissance lorsque plusieurs appareils sont branchés :\nUSB-C1 : jusqu’à 45 W\nUSB-C2 + USB-A : jusqu’à 17 W\n🔌 Puissance totale : 65 W max\n🔗 Câble Type-C vers Type-C 100 W inclus\n📏 Câble de 1 m\n🔥 Puce GaN de qualité aéronautique : Oraimo annonce une charge jusqu’à 20 % plus rapide qu’un chargeur classique\n🛡️ 9 niveaux de protection contre la surtension, sous-tension, surintensité, surchauffe, etc.\n🌍 Entrée universelle : 100–240 V, 50/60 Hz\n📱 Compatible notamment avec Apple, Samsung, Xiaomi, Huawei, TECNO, Infinix, HP, Dell et Lenovo. \n⭐ Point fort : un chargeur GaN 65 W à 3 ports, capable de recharger rapidement un ordinateur portable et plusieurs appareils avec une gestion intelligente de la puissance.",
           "prix": 17000,
-          "photo": "images/hypergan-65.jpg"
+          "photo": "images/hypergan-65.jpg",
+          "telephone": "786066137"
         }
       ]
     },
