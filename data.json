@@ -163,7 +163,7 @@
         {
           "id": "powernova-l21-opb-7203c",
           "nom": "PowerNova L21 20000mAh OPB-7203C",
-          "description": "Batterie externe 20 000 mAh, grande capacité pour plusieurs recharges.",
+          "description": "Oraimo PowerNova L21 \n🔋 Capacité : 20 000 mAh / 77 Wh\n⚡ Puissance maximale : 30 W\n🚀 Charge rapide bidirectionnelle\n🔌 2 sorties Type-C dont 1 câble Type-C intégré\n🔌 1 sortie USB-A\n📱 Charge jusqu’à 3 appareils simultanément\n⚡ Type-C : jusqu’à 30 W\n⚡ USB-A : jusqu’à 22,5 W\n🔄 Entrées Type-C : jusqu’à 25 W pour recharger rapidement la Power Bank\n📊 Affichage numérique intelligent du niveau de batterie\n🔗 Câble Type-C intégré de 29 cm, tressé et testé à plus de 10 000 flexions\n💪 Résistance du câble à une traction allant jusqu’à 10 kg\n🛡️ Système de protection intelligent à 15 niveaux\n📱 Compatible avec plus de 1 000 appareils\n🔋 Les cellules conservent plus de 80 % de leur capacité après 300 cycles de charge/décharge, selon les tests Oraimo\n🎒 Format compact et portable\n🔌 Jusqu’à 4,2 recharges complètes annoncées pour certains téléphones. \n⭐ Point fort : 20 000 mAh + 30 W + câble Type-C intégré + écran numérique, ce qui en fait une Power Bank très complète pour les déplacements et la recharge de plusieurs appareils.",
           "prix": 17000,
           "photo": "images/powernova-l21-opb-7203c.jpg"
         },
@@ -194,14 +194,6 @@
           "description": "Batterie externe 50 000 mAh, très grande capacité pour plusieurs jours d'autonomie.",
           "prix": 30000,
           "photo": "images/powerjet-501-opb-750sq.jpg"
-        },
-        {
-          "id": "magpower-15-opb-7102w-2",
-          "nom": "Magpower 15 OPB-7102w",
-          "description": "Chargeurs magnétique",
-          "prix": 18000,
-          "photo": "images/magpower-15-opb-7102w-2.jpg",
-          "telephone": "786066137"
         }
       ]
     },
