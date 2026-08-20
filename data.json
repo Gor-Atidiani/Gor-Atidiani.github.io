@@ -213,9 +213,10 @@
         {
           "id": "powercube-202-lightning-ocw-5202ecl",
           "nom": "PowerCube 202 20w Type-C to Lightning OCW-5202ECL",
-          "description": "Chargeur 20W, câble Type-C vers Lightning inclus, compatible iPhone.",
+          "description": "Oraimo PowerCube 202 \n⚡ Puissance maximale : 20 W\n🔌 Port USB-C\n🚀 Compatible PD 3.0 et QC 3.0 pour une recharge rapide\n🔋 Sorties :\n5V ⎓ 3A\n9V ⎓ 2,22A\n12V ⎓ 1,67A\n🔌 Entrée : 180–240V, 50/60Hz, 0,5A max\n🍎 Câble Type-C vers Lightning inclus\n📏 Longueur du câble : 1 m\n⚡ Courant du câble : jusqu’à 2,4A\n🛡️ 9 niveaux de protection pour une charge plus sûre\n📦 Format mini et compact, facile à transporter\n📱 Compatible avec les iPhone, smartphones, tablettes et autres appareils compatibles USB-C/Lightning. \n⭐ Point fort : un chargeur 20 W compact avec câble Type-C vers Lightning inclus, particulièrement pratique pour les appareils Apple compatibles avec la charge rapide.",
           "prix": 6000,
-          "photo": "images/powercube-202-lightning-ocw-5202ecl.jpg"
+          "photo": "images/powercube-202-lightning-ocw-5202ecl.jpg",
+          "telephone": "786066137"
         },
         {
           "id": "powercube-201-rapid-ocw-5203ecc",
