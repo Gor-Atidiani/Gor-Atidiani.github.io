@@ -194,6 +194,14 @@
           "description": "Batterie externe 50 000 mAh, très grande capacité pour plusieurs jours d'autonomie.",
           "prix": 30000,
           "photo": "images/powerjet-501-opb-750sq.jpg"
+        },
+        {
+          "id": "magpower-15-opb-7102w-2",
+          "nom": "Magpower 15 OPB-7102w",
+          "description": "Chargeurs magnétique",
+          "prix": 18000,
+          "photo": "images/magpower-15-opb-7102w-2.jpg",
+          "telephone": "786066137"
         }
       ]
     },
