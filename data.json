@@ -261,9 +261,10 @@
         {
           "id": "powergan-33-pro-ocw-7331e-ec54",
           "nom": "PowerGan 33 Pro GAN Charging Type-C OCW-7331E+EC54",
-          "description": "Chargeur GaN compact, charge rapide, câble Type-C inclus.",
+          "description": "Oraimo PowerGaN 33 Pro \n⚡ Puissance maximale : 33 W\n🔌 Double sortie : USB-C + USB-A\n🚀 Technologie GaN : plus compacte, efficace et avec une meilleure gestion de la chaleur\n⚡ USB-C : jusqu’à 33 W\n🔌 USB-A : jusqu’à 33 W\n🔋 Sortie simultanée USB-C + USB-A : jusqu’à 17 W\n⚡ PPS pour une charge rapide et adaptée aux appareils compatibles\n🔋 USB-C : 5V/3A, 9V/3A, 12V/2,5A, 15V/2A, 20V/1,5A\n🔌 USB-A : 5V/3A, 9V/3A, 12V/2,5A, 15V/2A, 20V/1,5A\n🧠 Gestion dynamique de la puissance pour adapter automatiquement la charge à l’appareil\n📱 Compatible avec plus de 1 000 appareils, notamment Apple, Samsung, TECNO, Infinix, Xiaomi et Huawei\n🔗 Câble USB-A vers Type-C 60 W inclus\n📏 Longueur du câble : 1 m\n🛡️ 9 niveaux de protection contre les problèmes liés à la charge\n🌍 Entrée universelle : 100–240 V\n🎒 Format compact et portable\n⭐ Point fort : un chargeur GaN 33 W à double port, livré avec un câble USB-A vers Type-C 60 W, permettant de recharger rapidement un appareil ou deux appareils simultanément.",
           "prix": 10000,
-          "photo": "images/powergan-33-pro-ocw-7331e-ec54.jpg"
+          "photo": "images/powergan-33-pro-ocw-7331e-ec54.jpg",
+          "telephone": "786066137"
         },
         {
           "id": "hypergan-65",
