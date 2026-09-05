@@ -392,6 +392,21 @@
           "telephone": "786066137"
         }
       ]
+    },
+    {
+      "id": "veilleuse-led-intelligente",
+      "nom": "Veilleuse LED intelligente",
+      "icone": "💡",
+      "produits": [
+        {
+          "id": "oraimo-smartlight",
+          "nom": "Oraimo SmartLight",
+          "description": "Oraimo SmartLight est une veilleuse LED intelligente à détection automatique, conçue principalement pour éclairer doucement les espaces sombres comme une chambre, un couloir, des escaliers, une salle de bain ou une armoire. \n💡 Ses principales caractéristiques\nDétecteur de mouvement : elle s’allume automatiquement lorsqu’elle détecte un mouvement dans l’obscurité, jusqu’à environ 3 mètres.\nCapteur de luminosité : elle ne s'allume que lorsqu’il fait suffisamment sombre.\nExtinction automatique : elle s’éteint environ 25 secondes après l’absence de mouvement.\nLumière douce 4000 K : conçue pour être confortable la nuit et éviter une lumière trop agressive.\nBatterie intégrée de 500 mAh.\nAutonomie : environ 4 heures en éclairage continu, mais jusqu’à 4 mois en utilisation automatique selon l’utilisation.\nRecharge USB-C, environ 2 à 3 heures.\nPuissance très faible : 0,5 W.\nInstallation magnétique : on peut fixer la base adhésive puis retirer facilement la lampe. \n👉 En résumé : c'est une petite lampe de nuit rechargeable qui s'allume toute seule quand tu passes dans le noir, puis s'éteint automatiquement. C'est particulièrement pratique pour les couloirs, escaliers, chambres et toilettes.\n\n Installation en 3 étapes :\n1-Nettoyez et séchez la surface où vous voulez installer la veilleuse.\n2-À l’arrière, vous avez un socle/support magnétique avec un adhésif. Retirez le film protecteur de l’adhésif.\n3-Collez le support sur le mur ou la surface souhaitée, puis approchez simplement la veilleuse du support : elle se fixe grâce à l’aimant.",
+          "prix": 6000,
+          "photo": "images/oraimo-smartlight.jpg",
+          "telephone": "786066137"
+        }
+      ]
     }
   ]
 }
