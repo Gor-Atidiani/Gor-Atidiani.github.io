@@ -303,6 +303,14 @@
           "prix": 25000,
           "photo": "images/boompop-pro-ohp-917.jpg",
           "telephone": "786066137"
+        },
+        {
+          "id": "oraimo-boompop-air-ohp-316",
+          "nom": "🎧 Oraimo BoomPop Air OHP-316",
+          "description": "Le Oraimo BoomPop Air est un casque Bluetooth léger et confortable, conçu pour profiter pleinement de sa musique, de ses vidéos ou de ses appels au quotidien. Son format On-Ear offre un bon équilibre entre confort, légèreté et qualité sonore, tandis que ses haut-parleurs dynamiques de 40 mm délivrent un son puissant avec des basses profondes grâce à la technologie HavyBass™. Il intègre également Sound360 Spatial Audio pour une expérience sonore plus immersive. \n🔹 Caractéristiques détaillées\nModèle : BoomPop Air OHP-316\nType : casque sans fil On-Ear\nBluetooth : 5.3\nPortée Bluetooth : ≥ 10 mètres\nHaut-parleurs : 40 mm, pilotes dynamiques\nTechnologie audio : HavyBass™ + Sound360 Spatial Audio\nAutonomie : jusqu’à 80 heures annoncées par Oraimo\nPort de recharge : USB Type-C\nRecharge rapide : environ 10 minutes de charge pour jusqu’à 8 heures d'écoute\nConnexion filaire : câble AUX 3,5 mm\nMicrophone : microphone HD intégré pour des appels plus clairs\nDouble connexion : possibilité de connecter deux appareils et de passer facilement de l’un à l’autre\nCoussinets : remplaçables, en cuir protéiné doux et respirant\nStructure : arceau réglable et écouteurs rotatifs\nApplication : compatible avec oraimo Sound\nContenu de la boîte : casque, coussinets de remplacement, câble USB-C et guide de démarrage.",
+          "prix": 15000,
+          "photo": "images/oraimo-boompop-air-ohp-316.jpg",
+          "telephone": "786066137"
         }
       ]
     },
